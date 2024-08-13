@@ -84,7 +84,7 @@ console.log(user1);
 console.log(user1Age);
 
 const user3 = {
-	name: "harkirat",
+	name: "jawan",
 	age: 19,
 	address: {
 		city: "Delhi",
