@@ -16,32 +16,48 @@
 // const ans =sum(100)
 // console.log(ans);
 
+// const fs = require("fs");
+
+// const contents = fs.readFileSync("a.txt", "utf-8");
+// console.log(contents);
+// const contents2 = fs.readFileSync("b.txt", "utf-8");
+// console.log(contents2);
+
+// // functional argument
+// function sum(a, b) {
+//     return a + b;
+//   }
+  
+//   function multiply(a, b) {
+//     return a * b;
+//   }
+  
+//   function subtract(a, b) {
+//     return a - b;
+//   }
+  
+//   function divide(a, b) {
+//     return a / b;
+//   }
+  
+//   function doOperation(a, b, op) {
+//     return op(a, b)
+//   }
+  
+//   console.log(doOperation(1, 2, sum))
+
+// asynchronous code
 const fs = require("fs");
 
-const contents = fs.readFileSync("a.txt", "utf-8");
-console.log(contents);
-const contents2 = fs.readFileSync("b.txt", "utf-8");
-console.log(contents2);
+fs.readFile("a.txt", "utf-8", function (err, contents) {
+  console.log(contents);
+});
 
-// functional argument
-function sum(a, b) {
-    return a + b;
-  }
-  
-  function multiply(a, b) {
-    return a * b;
-  }
-  
-  function subtract(a, b) {
-    return a - b;
-  }
-  
-  function divide(a, b) {
-    return a / b;
-  }
-  
-  function doOperation(a, b, op) {
-    return op(a, b)
-  }
-  
-  console.log(doOperation(1, 2, sum))
+fs.readFile("b.txt", "utf-8", function (err, contents) {
+  console.log(contents);
+});
+
+fs.readFile("a.txt", "utf-8", function (err, contents) {
+  console.log(contents);
+});
+console.log("how r u")
