@@ -46,18 +46,32 @@
   
 //   console.log(doOperation(1, 2, sum))
 
-// asynchronous code
-const fs = require("fs");
+// // asynchronous code
+// const fs = require("fs");
 
-fs.readFile("a.txt", "utf-8", function (err, contents) {
-  console.log(contents);
-});
+// fs.readFile("a.txt", "utf-8", function (err, contents) {
+//   console.log(contents);
+// });
 
-fs.readFile("b.txt", "utf-8", function (err, contents) {
-  console.log(contents);
-});
+// fs.readFile("b.txt", "utf-8", function (err, contents) {
+//   console.log(contents);
+// });
 
-fs.readFile("a.txt", "utf-8", function (err, contents) {
-  console.log(contents);
-});
-console.log("how r u")
+// fs.readFile("a.txt", "utf-8", function (err, contents) {
+//   console.log(contents);
+// });
+// console.log("how r u")
+
+function timeout(){
+  console.log("click the button");
+}
+
+console.log("Hi");
+
+setTimeout(timeout,1000);
+console.log("Welcome to loupe");
+let c = 0;
+for(let i = 0; i<10000000000; i++){
+  c = c + 1;
+}
+console.log("expensive operation done");
