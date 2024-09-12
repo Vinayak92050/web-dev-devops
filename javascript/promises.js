@@ -95,31 +95,104 @@
 
 // console.log("----end of file----")
 
-class Promise2 {
-    constructor(fn){
-        function afterdone() {
-            this.resolve();
-        }
-        fn(afterdone)
-    }
-    then(callback){
-        this.resolve = callback;
-    }
-}
+// class Promise2 {
+//     constructor(fn){
+//         function afterdone() {
+//             this.resolve();
+//         }
+//         fn(afterdone)
+//     }
+//     then(callback){
+//         this.resolve = callback;
+//     }
+// }
 
-function readTheFile(resolve) {
-    setTimeout(function(){
-        console.log("callback based setTimeout completed");
-        resolve();
-    },3000);
-}
+// function readTheFile(resolve) {
+//     setTimeout(function(){
+//         console.log("callback based setTimeout completed");
+//         resolve();
+//     },3000);
+// }
 
-function setTimeoutPromisified(){
-    return new Promise2(readTheFile)
-}  
+// function setTimeoutPromisified(){
+//     return new Promise2(readTheFile)
+// }  
 
-let p = setTimeoutPromisified();
-function callback() {
-    console.log("callback has been called");
-}
-p.then(callback);
+// let p = setTimeoutPromisified();
+// function callback() {
+//     console.log("callback has been called");
+// }
+// p.then(callback);
+
+// // callback hell
+//  function callback(){
+//     console.log("hi")
+// }
+// setTimeout(function(){
+//     console.log("hi")
+//     setTimeout(function(){
+//         console.log("hello")
+//         setTimeout(function(){
+//             console.log("hello there")
+//         },5000);
+//     },3000);
+// },1000);
+
+
+// // promisified way 
+// function setTimeoutPromisified(duration){
+//     return new Promise(function(resolve){
+//         setTimeout(resolve,duration);
+//     })
+// }
+
+//  setTimeoutPromisified(1000).then(function(){
+//     console.log("hi");
+//     setTimeoutPromisified(3000).then(function(){
+//         console.log("hello");
+//         setTimeoutPromisified(5000).then(function(){
+//             console.log("hi there");
+//         });    
+//     });
+//  });
+
+// // alternate way(promise chaining)
+
+// function setTimeoutPromisified(duration){
+//     return new Promise(function(resolve){
+//         setTimeout(resolve,duration);
+//     })
+// }
+
+// setTimeoutPromisified(1000).then(function(){
+//     console.log("hi");
+//     return setTimeoutPromisified(3000)
+// }).then(function(){
+//     console.log("hello");
+//     return setTimeoutPromisified(5000)
+// }).then(function(){
+//     console.log("hi there");
+// });
+// console.log("outside the callback hell");
+
+// //sorted string in javascript
+
+// let str1 = "asfd";
+// const sortedString = str1.split("").sort().join("");
+// console.log(sortedString);
+
+// // async await 
+function setTimeoutPromisified(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  //
+async function solve() {
+    await setTimeoutPromisified(1000);
+    console.log("hi");
+    await setTimeoutPromisified(3000);
+    console.log("hello");
+    await setTimeoutPromisified(5000);
+    console.log("hi there");
+  }
+  
+  solve();
