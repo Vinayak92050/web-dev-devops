@@ -182,17 +182,41 @@
 // console.log(sortedString);
 
 // // async await 
-function setTimeoutPromisified(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-  //
-async function solve() {
-    await setTimeoutPromisified(1000);
-    console.log("hi");
-    await setTimeoutPromisified(3000);
-    console.log("hello");
-    await setTimeoutPromisified(5000);
-    console.log("hi there");
-  }
+// function setTimeoutPromisified(ms) {
+//     return new Promise(resolve => setTimeout(resolve, ms));
+// }
+  //syntactic sugar
+// async function solve() {
+//     await setTimeoutPromisified(1000);
+//     console.log("hi");
+//     await setTimeoutPromisified(3000);
+//     console.log("hello");
+//     await setTimeoutPromisified(5000);
+//     console.log("hi there");
+//   }
   
-  solve();
+//   solve();
+
+const fs = require("fs");
+function readFileAsync(){
+    return new Promise(function(resolve,reject){
+        fs.readFile("a.txt","utf-8",function(err,data){
+            //err
+            if (err) {
+                reject("File not found")
+            }else{
+                resolve(data);
+            }
+            
+        });
+    });
+}
+
+readFileAsync()
+.then(function(x){
+    console.log("files has been read")
+    console.log(x);
+})
+.catch(function(e){
+    console.log(e);
+})
