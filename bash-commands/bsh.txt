@@ -11,8 +11,8 @@
 12. ls *.js ----------------To view all the js files in that folder.
 13. ls Zoo* ----------------To view all the files with "Zoo" in its name.
 14. ls .. ------------------list all directories and folder.
-
-15. cd ---------------------------Go to
+n  
+15. cd ---------------------------Go to current directory
 16. cd .. ------------------------Go to previously directory.
 17. cd ../../ --------------------Go back twice.
 18. touch ------------------------To create a file. {touch a.js}
