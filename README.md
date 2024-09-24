@@ -1,2 +1,2 @@
 # web-dev-devops
-Cohort 3.0 learnings 
+web-dev-devops learnings 
