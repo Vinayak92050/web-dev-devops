@@ -28,7 +28,7 @@
             //todos.shift()
             render()
         }
-        function deleteTodo(index) {
+        function deleteTodoAt(index) {
             todos.splice(index, 1); // Remove the specific todo at the index
             render();
         }
@@ -38,9 +38,7 @@
             const h1 = document.createElement("h1");
             const button = document.createElement("button");
             button.innerHTML = "Delete";
-            button.onclick = function() {
-                deleteTodo(index); // Call deleteTodo for the specific index
-            };
+            button.setAttribute("onclick","deleteTodoAt("+index+")");
             h1.innerHTML = todo.title;
             div.appendChild(h1);
             div.appendChild(button);
