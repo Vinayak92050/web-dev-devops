@@ -20,13 +20,13 @@
         function deleteLastTodo(){
             todos.splice(todos.length - 1 , 1) //remove last element from arr
             //todos.pop()
-            render()
+            render();
         }
 
         function deleteFirstTodo(){
             todos.splice(0,1)
             //todos.shift()
-            render()
+            render();
         }
         function deleteTodoAt(index) {
             todos.splice(index, 1); // Remove the specific todo at the index
