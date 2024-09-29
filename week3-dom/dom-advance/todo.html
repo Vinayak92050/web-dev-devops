@@ -39,9 +39,12 @@
             const button = document.createElement("button");
             button.innerHTML = "Delete";
             button.setAttribute("onclick","deleteTodoAt("+index+")");
+            const updateButton = document.createElement("button");
+            updateButton.setAttribute("onclick", "updateTodoAt(" + index + ")");
             h1.innerHTML = todo.title;
             div.appendChild(h1);
             div.appendChild(button);
+            div.appendChild(updatebutton);
             return div
         }
         //react
