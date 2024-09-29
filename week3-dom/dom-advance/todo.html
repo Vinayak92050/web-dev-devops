@@ -1,63 +1,73 @@
-
 <body>
+    <input type="text" id="inputField"></input>
+    <button onclick="addTodo()">Add todo!</button>
+    <button onclick="deleteLastTodo()">delete last todo</button>
+    <button onclick="deleteFirstTodo()">delete first todo</button>
+    <div id="todos"></div>
     
-    <input type = "text"></input>
-    <button onclick = "addTodo()">Add todo!</button>
-
-    <button onclick = "deleteLastTodo()">delete last todo </button>
-    <button onclick = "deleteFirstTodo()">delete first todo </button>
-    <div id = "todos"></div>
     <script>
         let todos = [];
-        function addTodo(){       
-            todos.push({
-                title: document.querySelector("input").value
-            })
-            render();
-
-        }
-
-        function deleteLastTodo(){
-            todos.splice(todos.length - 1 , 1) //remove last element from arr
-            //todos.pop()
-            render();
-        }
-
-        function deleteFirstTodo(){
-            todos.splice(0,1)
-            //todos.shift()
+        
+        function addTodo() {
+            const input = document.querySelector("#inputField").value;
+            
+            if (input.trim() === '') {
+                alert("Todo cannot be empty! Please enter something.");
+                return; // Prevent adding empty todos
+            }
+        
+            todos.push({ title: input });
             render();
         }
+
+        function deleteLastTodo() {
+            todos.splice(todos.length - 1, 1); // Remove last element from array
+            render();
+        }
+
+        function deleteFirstTodo() {
+            todos.splice(0, 1); // Remove the first element from array
+            render();
+        }
+
         function deleteTodoAt(index) {
             todos.splice(index, 1); // Remove the specific todo at the index
             render();
         }
+        
+        function updateTodoAt(index) {
+            const newTitle = prompt("Update the todo:", todos[index].title); // Prompt for new title
+            if (newTitle && newTitle.trim() !== '') {
+                todos[index].title = newTitle; // Update the todo title
+                render();
+            }
+        }
 
-        function createTodoComponent(todo,index){
+        function createTodoComponent(todo, index) {
             const div = document.createElement("div");
             const h1 = document.createElement("h1");
             const button = document.createElement("button");
             button.innerHTML = "Delete";
-            button.setAttribute("onclick","deleteTodoAt("+index+")");
+            button.setAttribute("onclick", "deleteTodoAt(" + index + ")");
+            
             const updateButton = document.createElement("button");
+            updateButton.innerHTML = "Update"; // Added missing button label
             updateButton.setAttribute("onclick", "updateTodoAt(" + index + ")");
+            
             h1.innerHTML = todo.title;
             div.appendChild(h1);
             div.appendChild(button);
-            div.appendChild(updatebutton);
-            return div
+            div.appendChild(updateButton); // Corrected casing for the button
+
+            return div;
         }
-        //react
-        function render(){
+
+        function render() {
             document.querySelector("#todos").innerHTML = "";
-            for (let i = 0 ; i<todos.length; i++){
-                const element = createTodoComponent(todos[i],i);
+            for (let i = 0; i < todos.length; i++) {
+                const element = createTodoComponent(todos[i], i);
                 document.querySelector("#todos").appendChild(element);
             }
         }
-
     </script>
-
-
-
 </body>
